@@ -1,0 +1,105 @@
+<?php
+session_start();
+if(isset($_SESSION['user_name'])&&isset($_SESSION['password']))
+{
+if(isset($_GET['delete_id'])){
+    $con=mysqli_connect('localhost','root','','ocss')or die('<h2>connection failed</h2>');
+     $sql_query="DELETE FROM faculty_manager WHERE id=".$_GET['delete_id'];
+     mysqli_query($con, $sql_query);
+     header("Location: managefacultymanager.php");
+}
+?>
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Admin page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="../css/cssformstyle.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../css/cssformstyle.css">
+<link href="../css/font-awesome.css" rel="stylesheet prefetch" type="text/css"/>
+<script src="../sweetalert/sweetalert.min.js"></script>
+<script src="../sweetalert/sweetalert-devmin.js"></script>
+<link rel="stylesheet" href="../sweetalert/sweetalert.css">
+<script src="../js/jquery.min.js"></script>
+<script src="../js/slidform.js"></script>
+<script src="../jquery/jquery.js"></script>
+<script type="text/javascript">
+function delete_fm(id)
+{
+ swal({
+  title: "Are you sure?",
+  text: "You will not be able to recover this imaginary file!",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Yes",
+  cancelButtonText: "No",
+  closeOnConfirm: false,
+  closeOnCancel: false
+},
+function(isConfirm){
+  if (isConfirm) {
+    window.location = "managefacultymanager.php?delete_id="+id;
+    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+  } else {
+      swal("Cancelled", "Your imaginary file is safe : "+id, "error");
+  }
+});
+}
+</script>
+</head>
+<body>  
+    <div id='container'>
+      <div id = ''>
+        </div>
+        <div id='content'>
+          <?php include_once 'collomenone.php'; ?>
+            <div class="formstyle" id='coltwo'>
+              <!--Faculty-->
+              <div id='faculty2'>
+                  <form id='managefacultymanagerform'>
+                    <h1>Manage Department Manager</h1>
+                     <?php 
+                      include_once 'faculty.php';
+                      $mf = new faculty();
+                      $manag = $mf->managefacultymanager();
+                      ?>
+                  </form>
+                </div>
+            <script>
+              $(document).ready(function() {
+                $('#sub-campus').hide();
+                $('#sub-account').hide();
+                $('#faculty').click(function() {
+                  $('#sub-campus').hide();
+                  $('#sub-account').hide();
+                  $('#sub-faculty').slideDown(800);
+               });
+                $('#campus').click(function() {
+                  $('#sub-account').hide();
+                  $('#sub-faculty').hide();
+                  $('#sub-campus').slideDown(800);
+                });
+                $('#account').click(function() {
+                  $('#sub-campus').hide();
+                  $('#sub-faculty').hide(); 
+                  $('#sub-account').slideDown(800);
+                });
+              });
+            </script>
+              <!--End of Faculty-->
+            </div>
+            <div id='colthree'>
+              <?php include_once 'link.php'; ?>
+            </div><!--end of colo 3---->
+        </div><!--endofcontent---->
+        
+    </div>
+</body>
+</html> 
+<?php
+}
+else
+header('location:../index.php');
+?>   

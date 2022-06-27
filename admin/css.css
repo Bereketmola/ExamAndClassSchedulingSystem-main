@@ -1,0 +1,59 @@
+   #passwordStrength{
+  height:10px;
+  display:block;
+  float:left;
+}
+
+.strength0{
+  width: 85%;
+  margin-left: 2%;
+  padding: 2%;
+  border-radius: 5%;
+  background-color: #efefef;
+}
+
+.strength1{
+  width: 16%;
+  margin-left: 2%;
+  padding: 2%;
+  border-radius: 5%;
+  background:#ff0000;
+}
+
+.strength2{
+  width: 32%;
+  margin-left: 2%;
+  padding: 2%; 
+  background:#ff5f5f;
+}
+
+.strength3{
+  width: 48%;
+  margin-left: 2%;
+  padding: 2%;
+  border-radius: 5%;
+  background:#56e500;
+}
+
+.strength4{
+  width: 64%;
+  margin-left: 2%;
+  padding: 2%;
+  border-radius: 5%;
+  background:#4dcd00;
+}
+
+.strength5{
+  width: 80%;
+  margin-left: 2%;
+  padding: 2%;
+  border-radius: 5%;
+  background:#49CBCD;
+}
+.strength5{
+  width: 85%;
+  margin-left: 2%;
+  padding: 2%;
+  border-radius: 5%;
+  background:#294ea5;
+}
